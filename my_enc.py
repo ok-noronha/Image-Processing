@@ -1,6 +1,7 @@
+import random
 from PIL import Image, ImageDraw
 import os, sys
-#from random import SystemRandom
+
 #random = SystemRandom()
 #If you want to use the more powerful PyCrypto (pip install pycrypto) then uncomment the next line and comment out the previous two lines
 #from Crypto.Random import random
@@ -62,7 +63,7 @@ for x in range(0, width//3):
 			share.point((x*3, y*3+2), pat[6])
 			share.point((x*3+1, y*3+2), pat[7])
 			share.point((x*3+2, y*3+2), pat[8])
-		
+
 out_image_A.save(out_filename_A, 'PNG')
 out_image_B.save(out_filename_B, 'PNG')
 out_image_C.save(out_filename_C, 'PNG')
