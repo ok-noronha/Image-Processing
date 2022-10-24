@@ -30,10 +30,9 @@ def __init__():
 
 
     global n; global k
-    #n=int(input("Number of Shares to be made :"))
-    #k=int(input("Number of Shares need to get picture :"))
-    n=5
-    k=3
+    n=int(input("Number of Shares to be made :"))
+    k=int(input("Number of Shares need to get picture :"))
+
     global rows, columns, channels
     rows, columns, channels = img.shape
 
@@ -50,7 +49,7 @@ def create_shares():
                 ch=[]
                 col.append(ch)
                 for channel in pix:
-                    ch.append(0)
+                    ch.append(80)
         shares.append(np.array(r))
 
 def share_mod():
@@ -62,13 +61,17 @@ def share_mod():
                 val=img[row,pix,channel]
                 nums=[]
                 temp_shares=[]
-                for _ in range(0,k):
+                for _ in range(1,k):
                     num = random.randint(0,val)
                     nums.append(num)
                     share=shares.pop(random.randint(0,len(shares)-1))
                     share[row,pix,channel]=num
                     val-=num
                     temp_shares.append(share)
+                share=shares.pop(random.randint(0,len(shares)-1))
+                share[row,pix,channel]=val
+                nums.append(val)
+                temp_shares.append(share)
 
                 for _ in range(0,n-k):
                     share=shares.pop(random.randint(0,len(shares)-1))
